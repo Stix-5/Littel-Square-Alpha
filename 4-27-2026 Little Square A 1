@@ -1,0 +1,58 @@
+Includes Quick Studio
+Toutorial For Platformer Used
+CODE IN MAIN:
+
+init = function()
+  Quick.init()
+  Quick.addMap("mapx",0,0,400,200)
+ player = Quick.addSprite("player",-180,50,20)
+ Quick.background ="rgb(87,197,197)"
+ Quick.gravity = 30
+ Quick.ground = -10000
+end
+
+update = function()
+  Quick.update()
+  
+  if keyboard.RIGHT then
+    player.vx = 100
+    player.name = "player_run"
+  else if keyboard.LEFT then
+    player.vx = -100
+    player.name = "player_left"
+  else
+    player.vx = 0
+    player.name = "player"
+  end
+  end
+  
+  if keyboard.UP and player.grounded then
+    player.vy = 150
+  end
+  
+  if not player.grounded then
+    player.name = "player_jump"
+end
+
+if player.y<-200 then
+  gameover = 1
+  end
+Quick.camera.move(player.x,player.y)
+end
+
+draw = function()
+  if gameover then
+    screen.clear()
+    screen.drawText("GAME OVER",0,0,50,"rgb(255,255,255)")
+    else
+  Quick.draw()
+  end
+end
+
+
+
+
+
+
+
+built in microstudio
